@@ -41,4 +41,12 @@ public class ClaimsService {
         claims.setModifiedDate(claims.getCreatedDate());
         claimsRepository.save(claims);
     }
+
+    public Claims updateClaims(Claims claims) {
+        Claims updatedClaims = claimsRepository.findById(claims.getClaimsId()).orElseThrow(()->new NoSuchElementException());
+        updatedClaims.setCapableAmount(claims.getCapableAmount());
+        updatedClaims.setModifiedDate(LocalDateTime.now());
+        claimsRepository.save(updatedClaims);
+        return updatedClaims;
+    }
 }

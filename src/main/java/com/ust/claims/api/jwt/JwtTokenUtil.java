@@ -1,6 +1,6 @@
 package com.ust.claims.api.jwt;
 
-import com.ust.claims.api.user.UserEntity;
+import com.ust.claims.api.user.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +13,7 @@ public class JwtTokenUtil {
     @Value("${ust.jwt.secret}")
     private String secretKey;
 
-    public String generateAccessToken(UserEntity user) {
+    public String generateAccessToken(User user) {
         return Jwts.builder().setSubject(user.getEmail())
                 .setIssuer("ust").setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))

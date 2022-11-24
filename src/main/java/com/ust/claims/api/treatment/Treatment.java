@@ -1,5 +1,6 @@
 package com.ust.claims.api.treatment;
 
+import com.ust.claims.api.claims.Claims;
 import com.ust.claims.api.hospital.Hospital;
 import com.ust.claims.api.specialist.Specialist;
 import lombok.Data;
@@ -25,5 +26,8 @@ public class Treatment {
     private Hospital hospital;
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "treatment")
-    private Set<Specialist> specialistList;
+    private Set<Specialist> specialistSet;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "treatment")
+    private Set<Claims> claimsSet;
 }

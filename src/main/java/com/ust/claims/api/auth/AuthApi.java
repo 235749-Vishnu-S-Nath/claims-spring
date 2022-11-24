@@ -1,7 +1,7 @@
 package com.ust.claims.api.auth;
 
 import com.ust.claims.api.jwt.JwtTokenUtil;
-import com.ust.claims.api.user.UserEntity;
+import com.ust.claims.api.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +26,7 @@ public class AuthApi {
         try {
             Authentication authentication = authManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
-            UserEntity user = (UserEntity) authentication.getPrincipal();
+            User user = (User) authentication.getPrincipal();
             //String accessToken = "UST Access Token";
             String accessToken=jwtTokenUtil.generateAccessToken(user);
             AuthResponse response = new AuthResponse(user.getEmail(), accessToken);

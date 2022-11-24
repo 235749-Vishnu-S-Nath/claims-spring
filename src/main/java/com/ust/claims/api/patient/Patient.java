@@ -1,9 +1,11 @@
 package com.ust.claims.api.patient;
 
+import com.ust.claims.api.claims.Claims;
 import com.ust.claims.api.hospital.Hospital;
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,4 +25,9 @@ public class Patient {
     @ManyToOne
     @JoinColumn(name = "hospital_id")
     private Hospital hospital;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "patient")
+    private Set<Claims> claimsSet;
+
+
 }

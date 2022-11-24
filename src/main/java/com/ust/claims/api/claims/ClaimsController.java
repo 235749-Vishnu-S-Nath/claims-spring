@@ -39,4 +39,15 @@ public class ClaimsController {
         claimsService.saveClaims(claims);
         return new ResponseEntity<Claims>(HttpStatus.OK);
     }
+
+    @PutMapping("/book")
+    public ResponseEntity<Claims> update(@RequestBody Claims claims){
+        try{
+            Claims updatedClaims = claimsService.updateClaims(claims);
+            return new ResponseEntity<Claims>(HttpStatus.OK);
+        }
+        catch (NoSuchElementException e){
+            return new ResponseEntity<Claims>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

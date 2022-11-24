@@ -1,9 +1,11 @@
 package com.ust.claims.api.specialist;
 
+import com.ust.claims.api.claims.Claims;
 import com.ust.claims.api.treatment.Treatment;
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -21,6 +23,9 @@ public class Specialist {
     @ManyToOne
     @JoinColumn(name = "treatment_id")
     private Treatment treatment;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "specialist")
+    private Set<Claims> claimsSet;
 }
 
 
