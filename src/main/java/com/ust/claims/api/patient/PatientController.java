@@ -12,6 +12,7 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/patient/{id}")
     public ResponseEntity<PatientDto> get(@PathVariable Integer id){
         try{
@@ -22,6 +23,8 @@ public class PatientController {
             return new ResponseEntity<PatientDto>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/patients")
     public ResponseEntity<List<PatientDto>> getAll() {
         try {

@@ -23,6 +23,7 @@ public class TreatmentController {
             return new ResponseEntity<TreatmentDto>(HttpStatus.NOT_FOUND);
         }
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/treatments")
     public ResponseEntity<List<TreatmentDto>> getAll() {
         try {

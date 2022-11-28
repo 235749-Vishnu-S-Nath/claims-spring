@@ -7,5 +7,4 @@ public class PolicyDto {
     private int policyId;
     private String policyName;
     private long policyPremiumAmount;
-    private String insuranceName;
 }

@@ -13,6 +13,7 @@ public class PolicyController {
     @Autowired
     PolicyService policyService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/policy/{id}")
     public ResponseEntity<PolicyDto> get(@PathVariable Integer id){
         try{
@@ -23,7 +24,9 @@ public class PolicyController {
             return new ResponseEntity<PolicyDto>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/policy")
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/policies")
     public ResponseEntity<List<PolicyDto>> getAll() {
         try {
             List<Policy> policy = policyService.getAllPolicy();

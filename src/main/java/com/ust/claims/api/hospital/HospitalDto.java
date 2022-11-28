@@ -7,5 +7,5 @@ public class HospitalDto {
     private int hospitalId;
     private String hospitalName;
     private String hospitalLocation;
-    private LocalDateTime modifiedDate;
+    private String hospitalContactNumber;
 }

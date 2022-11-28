@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class SpecialistService {
@@ -30,15 +32,26 @@ public class SpecialistService {
             specialistRepository.save(specialist);
         }
 
-        public List<Specialist> getAllSpecialist() {
-            return specialistRepository.findAll();
+        public List<Specialist> getAllSpecialist(Integer id) {
+            List<Specialist> newSpecialist=specialistRepository.findAll();
+            List<Specialist> updateSpecialist = new ArrayList<>();
+            for(Specialist s:newSpecialist){
+                if(s.getTreatment().getTreatmentId()==id){
+                    updateSpecialist.add(s);
+                }
+            }
+            return updateSpecialist;
         }
 
-        public List<SpecialistDto> convertToDtoList(List<Specialist> specialistList) {
-            List<SpecialistDto> specialistDtoList = new ArrayList<>();
-            for(Specialist specialist:specialistList){
-                specialistDtoList.add(modelMapper.map(specialist,SpecialistDto.class));
-            }
-            return specialistDtoList;
+        public List<SpecialistDto> convertToDtoList(List<Specialist> specialistSet) {
+            return  specialistSet.stream().map(e->modelMapper.map(e,SpecialistDto.class)).collect(Collectors.toList());
         }
+
+        /*
+    public List<Specialist> getSpecialistByTreatmentId(Integer id) {
+        List<Specialist> specialistById=specialistRepository.findByTreatmentId(id);
+        return specialistById;
+    }
+
+         */
 }

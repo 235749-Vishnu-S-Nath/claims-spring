@@ -21,10 +21,6 @@ public class Treatment {
     private LocalDateTime modifiedDate;
     private boolean status;
 
-    @ManyToOne
-    @JoinColumn(name = "hospital_id")
-    private Hospital hospital;
-
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "treatment")
     private Set<Specialist> specialistSet;
 

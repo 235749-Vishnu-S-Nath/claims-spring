@@ -12,6 +12,7 @@ public class HospitalController {
     @Autowired
     HospitalService hospitalService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/hospital/{id}")
     public ResponseEntity<HospitalDto> get(@PathVariable Integer id){
         try{
@@ -23,6 +24,7 @@ public class HospitalController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/hospital")
     public ResponseEntity<List<HospitalDto>> getAll() {
         try {

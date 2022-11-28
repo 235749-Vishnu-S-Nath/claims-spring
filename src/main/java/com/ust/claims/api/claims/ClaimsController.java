@@ -40,7 +40,7 @@ public class ClaimsController {
         return new ResponseEntity<Claims>(HttpStatus.OK);
     }
 
-    @PutMapping("/book")
+    @PutMapping("/claim")
     public ResponseEntity<Claims> update(@RequestBody Claims claims){
         try{
             Claims updatedClaims = claimsService.updateClaims(claims);
