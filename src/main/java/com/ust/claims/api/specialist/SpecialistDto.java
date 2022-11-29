@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class SpecialistDto {
 
-    private int specialistID;
+    private int specialistId;
     private String specialistName;
     private String qualification;
     private long specialistContactNumber;

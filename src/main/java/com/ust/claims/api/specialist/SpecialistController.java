@@ -48,6 +48,7 @@ public class SpecialistController {
             return new ResponseEntity<List<SpecialistDto>>(HttpStatus.NOT_FOUND);
         }
     }
+    
     @PostMapping("/specialist")
     public ResponseEntity<Specialist> add(@RequestBody Specialist specialist){
         specialistService.saveSpecialist(specialist);

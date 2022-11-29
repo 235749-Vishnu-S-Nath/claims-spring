@@ -23,7 +23,4 @@ public class Treatment {
 
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "treatment")
     private Set<Specialist> specialistSet;
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "treatment")
-    private Set<Claims> claimsSet;
 }

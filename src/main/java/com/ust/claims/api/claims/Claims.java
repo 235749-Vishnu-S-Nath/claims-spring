@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "claims_details")
 public class Claims {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int claimsId;
     private int capableAmount;
 
@@ -31,13 +31,9 @@ public class Claims {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
-    @ManyToOne
-    @JoinColumn(name = "treatment_id")
-    private Treatment treatment;
+    private int treatmentId;
 
-    @ManyToOne
-    @JoinColumn(name = "specialist_id")
-    private Specialist specialist;
+    private int specialistId;
 
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;

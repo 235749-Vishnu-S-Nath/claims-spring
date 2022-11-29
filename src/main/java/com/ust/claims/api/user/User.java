@@ -1,5 +1,6 @@
 package com.ust.claims.api.user;
 
+import com.ust.claims.api.patient.Patient;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
@@ -13,6 +14,10 @@ public class User implements UserDetails {
     private String email;
     @Column(nullable = false,unique = true)
     private String password;
+
+    @OneToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 
     // USER TYPE SHOULD COME
 
@@ -39,6 +44,7 @@ public class User implements UserDetails {
     public String getPassword() {
         return password;
     }
+    
 
     @Override
     public String getUsername() {

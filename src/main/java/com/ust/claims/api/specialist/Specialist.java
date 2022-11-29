@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name="specialist_details")
 public class Specialist {
     @Id
-    private int specialistID;
+    private int specialistId;
     private String specialistName;
     private String qualification;
     private long specialistContactNumber;
@@ -24,8 +24,6 @@ public class Specialist {
     @JoinColumn(name = "treatment_id")
     private Treatment treatment;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "specialist")
-    private Set<Claims> claimsSet;
 }
 
 

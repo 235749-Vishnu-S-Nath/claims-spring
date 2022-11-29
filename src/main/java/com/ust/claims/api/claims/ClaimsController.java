@@ -34,6 +34,7 @@ public class ClaimsController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/claims")
     public ResponseEntity<Claims> add(@RequestBody Claims claims){
         claimsService.saveClaims(claims);
