@@ -15,10 +15,6 @@ public class User implements UserDetails {
     @Column(nullable = false,unique = true)
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
-
     // USER TYPE SHOULD COME
 
     public User(String email, String password) {

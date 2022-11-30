@@ -13,6 +13,7 @@ public class ClaimsController {
     @Autowired
     ClaimsService claimsService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/claims/{id}")
     public ResponseEntity<ClaimsDto> get(@PathVariable Integer id){
         try{
@@ -24,6 +25,25 @@ public class ClaimsController {
         }
     }
 
+    /*
+    @GetMapping("/claims/{id}")
+    public ResponseEntity<ClaimsDto> getAll(@PathVariable Integer id) {
+        try {
+            List<Claims> claimsList = claimsService.getAllClaims();
+            Claims newClaims = new Claims();
+            for(Claims c:claimsList){
+                if(c.getPatient().getPatientId()==id){
+                    newClaims=c;
+                }
+            }
+            return new ResponseEntity<ClaimsDto>(claimsService.convertToDto(newClaims), HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<ClaimsDto>(HttpStatus.NOT_FOUND);
+        }
+    }
+     */
+
+    @CrossOrigin(origins = "*")
     @GetMapping("/claims")
     public ResponseEntity<List<ClaimsDto>> getAll() {
         try {
@@ -41,6 +61,7 @@ public class ClaimsController {
         return new ResponseEntity<Claims>(HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/claim")
     public ResponseEntity<Claims> update(@RequestBody Claims claims){
         try{

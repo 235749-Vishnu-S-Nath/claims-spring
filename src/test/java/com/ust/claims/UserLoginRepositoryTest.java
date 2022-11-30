@@ -15,7 +15,7 @@ import org.springframework.test.annotation.Rollback;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
-public class UserRepositoryTest {
+public class UserLoginRepositoryTest {
 
     @Autowired
     UserRepository repo;
@@ -30,7 +30,6 @@ public class UserRepositoryTest {
 
         User savedUser= (User) repo.save(newUser);
 
-        assert(savedUser).getUserId()>0;
         assert(savedUser.getEmail()).endsWith(".com");
     }
 }
